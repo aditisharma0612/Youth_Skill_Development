@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Q&A</title>
+    <style>
+        body {
+            background-color: black;
+            color: lightblue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #qa-container {
+            width: 70%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid lightblue;
+            box-shadow: 0 0 15px lightblue;
+            border-radius: 10px;
+            text-align: left;
+        }
+        textarea {
+            width: 100%;
+            height: 80px;
+            margin-top: 10px;
+            background-color: black;
+            color: lightblue;
+            border: 1px solid lightblue;
+            padding: 5px;
+        }
+        button {
+            background-color: lightblue;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #submitBtn {
+            display: none;
+            margin: 20px auto;
+        }
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #1f2937; /* Dark gray (gray-800) */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 10px lightblue;
+        transition: background 0.3s ease;
+    }
+    .back-button:hover {
+        background-color: #374151; /* Slightly lighter gray (gray-700) */
+    }
+        #result {
+            width: 70%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid lightblue;
+            box-shadow: 0 0 15px lightblue;
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="mockInterview.html" class="back-button">🔙 Back</a>
+
+    <h1>Technical Q&A Round</h1>
+
+    <label for="domainSelect">Choose your domain:</label>
+    <select id="domainSelect">
+        <option value="sde">Software Development (SDE)</option>
+        <option value="ai">Artificial Intelligence (AI)</option>
+        <option value="data_science">Data Science</option>
+        <option value="cloud">Cloud Computing</option>
+        <option value="full_stack">Full Stack</option>
+    </select>
+    <button onclick="startTest()">Start Test</button>
+
+    <div id="qa-container"></div>
+
+    <button id="submitBtn" onclick="submitAnswers()">Submit Test</button>
+
+    <div id="result"></div>
+
+    <script>
+        let questions = {
+            "sde": [
+                { q: "Explain the concept of polymorphism in OOP.", a: "Polymorphism allows objects to be treated as instances of their parent class, enabling method overriding and method overloading." },
+                { q: "What are the key differences between an interface and an abstract class?", a: "Interfaces define only method signatures, while abstract classes can have method implementations." },
+                { q: "Describe the time complexity of QuickSort in the worst case.", a: "Worst-case time complexity of QuickSort is O(n²), occurring when the pivot selection is poor." },
+                { q: "How does garbage collection work in Java?", a: "Java's garbage collector reclaims memory occupied by unreachable objects." },
+                { q: "What is the difference between stack and heap memory?", a: "Stack memory is used for static memory allocation, while heap is for dynamic memory allocation." },
+                { q: "Explain the producer-consumer problem and its solution.", a: "It's a multi-threading issue where producers add data to a buffer and consumers remove it, solved using semaphores or locks." },
+                { q: "What is a deadlock? How can it be prevented?", a: "Deadlock occurs when processes hold resources while waiting for each other; it can be prevented using resource ordering or avoidance techniques." },
+                { q: "What is dynamic programming? Give an example.", a: "Dynamic programming breaks problems into subproblems and stores results to avoid recomputation. Example: Fibonacci sequence." },
+                { q: "What is the difference between BFS and DFS?", a: "BFS explores level-wise, while DFS goes deep into nodes before backtracking." },
+                { q: "Explain how HashMap works internally in Java.", a: "HashMap stores key-value pairs using hash functions and handles collisions via chaining or open addressing." }
+            ],
+            "ai": [
+    { "q": "What is the difference between supervised and unsupervised learning?", "a": "Supervised learning uses labeled data, while unsupervised learning finds patterns in unlabeled data." },
+    { "q": "Explain the concept of overfitting in machine learning.", "a": "Overfitting occurs when a model learns noise instead of the actual pattern, leading to poor generalization." },
+    { "q": "What is the role of activation functions in neural networks?", "a": "Activation functions introduce non-linearity, enabling neural networks to learn complex patterns." },
+    { "q": "Describe the working of a Convolutional Neural Network (CNN).", "a": "CNNs use convolutional layers to detect spatial hierarchies and extract features from images." },
+    { "q": "What is the vanishing gradient problem?", "a": "It occurs in deep networks when gradients become too small, preventing effective weight updates." },
+    { "q": "Explain the difference between reinforcement learning and supervised learning.", "a": "Reinforcement learning learns through rewards, while supervised learning learns from labeled data." },
+    { "q": "What is an autoencoder, and what is it used for?", "a": "An autoencoder is a neural network used for feature extraction and dimensionality reduction." },
+    { "q": "How does a Transformer model differ from an RNN?", "a": "Transformers use self-attention to process all input tokens simultaneously, unlike sequential RNNs." },
+    { "q": "What is the significance of backpropagation in neural networks?", "a": "Backpropagation updates weights by propagating errors backward, optimizing network performance." },
+    { "q": "What are word embeddings, and why are they important?", "a": "Word embeddings convert words into dense vectors, capturing semantic relationships between them." }
+],
+"data_science": [
+    { "q": "What is the difference between regression and classification?", "a": "Regression predicts continuous values, while classification assigns labels to data points." },
+    { "q": "Explain the purpose of feature scaling.", "a": "Feature scaling normalizes data to improve model convergence and performance." },
+    { "q": "What are some common data preprocessing techniques?", "a": "Common techniques include missing value handling, normalization, encoding, and feature selection." },
+    { "q": "What is the curse of dimensionality?", "a": "It refers to performance degradation when data has too many features, leading to sparsity issues." },
+    { "q": "Describe the difference between PCA and t-SNE.", "a": "PCA reduces dimensions linearly, while t-SNE is nonlinear and better for visualization." },
+    { "q": "What is the importance of a confusion matrix?", "a": "A confusion matrix helps evaluate classification performance by showing TP, TN, FP, and FN values." },
+    { "q": "Explain the concept of bias-variance tradeoff.", "a": "Bias-variance tradeoff balances underfitting (high bias) and overfitting (high variance)." },
+    { "q": "What is a Random Forest, and how does it work?", "a": "Random Forest is an ensemble method using multiple decision trees to improve accuracy and reduce overfitting." },
+    { "q": "What is cross-validation, and why is it used?", "a": "Cross-validation splits data into training and validation sets to ensure model generalization." },
+    { "q": "Explain the difference between structured and unstructured data.", "a": "Structured data is organized in tables (e.g., databases), while unstructured data lacks a fixed format (e.g., images, text)." }
+],
+"cloud": [
+    { "q": "What are the key benefits of cloud computing?", "a": "Scalability, cost-efficiency, high availability, and on-demand resources." },
+    { "q": "Differentiate between IaaS, PaaS, and SaaS.", "a": "IaaS provides infrastructure, PaaS offers a platform for development, and SaaS delivers applications over the internet." },
+    { "q": "What is serverless computing?", "a": "Serverless computing allows code execution without managing underlying servers, automatically scaling based on demand." },
+    { "q": "Explain the concept of cloud elasticity.", "a": "Cloud elasticity enables automatic resource scaling up or down based on workload changes." },
+    { "q": "What is a Virtual Private Cloud (VPC)?", "a": "A VPC is an isolated section of a public cloud, offering greater security and control over networking." },
+    { "q": "How does load balancing work in cloud computing?", "a": "Load balancing distributes incoming traffic across multiple servers to ensure high availability and performance." },
+    { "q": "What is the difference between cloud storage and cloud computing?", "a": "Cloud storage provides remote data storage, while cloud computing offers computing resources like servers and processing power." },
+    { "q": "What is a Content Delivery Network (CDN)?", "a": "A CDN is a distributed network of servers that caches and delivers content closer to users for faster load times." },
+    { "q": "What are the security risks in cloud computing?", "a": "Common risks include data breaches, misconfiguration, unauthorized access, and insecure APIs." },
+    { "q": "What is Kubernetes, and how is it used in cloud computing?", "a": "Kubernetes is an orchestration tool for managing containerized applications across multiple nodes." }
+],
+"full_stack": [
+    { "q": "What is the difference between REST and GraphQL?", "a": "REST uses predefined endpoints, while GraphQL allows clients to request specific data with queries." },
+    { "q": "Explain the role of a frontend and backend in full stack development.", "a": "The frontend handles UI interactions, while the backend processes logic, database, and API requests." },
+    { "q": "What are WebSockets, and how do they work?", "a": "WebSockets enable real-time communication between a client and a server through persistent connections." },
+    { "q": "What is the purpose of middleware in web development?", "a": "Middleware processes requests between a client and a server, handling authentication, logging, and more." },
+    { "q": "How does authentication differ from authorization?", "a": "Authentication verifies identity, while authorization determines what resources the user can access." },
+    { "q": "Explain the difference between SQL and NoSQL databases.", "a": "SQL databases are structured and relational, while NoSQL databases handle unstructured data flexibly." },
+    { "q": "What is the importance of caching in web applications?", "a": "Caching improves performance by storing frequently accessed data for faster retrieval." },
+    { "q": "What are microservices, and how do they work?", "a": "Microservices break applications into independent services that communicate via APIs." },
+    { "q": "What is Cross-Origin Resource Sharing (CORS)?", "a": "CORS allows or restricts web pages from making requests to a different domain than their own." },
+    { "q": "Explain the importance of HTTPS in web development.", "a": "HTTPS encrypts data between a client and server to enhance security and prevent attacks like MITM." }
+]
+        };
+
+        function startTest() {
+            let domain = document.getElementById("domainSelect").value;
+            let selectedQuestions = questions[domain].sort(() => 0.5 - Math.random()).slice(0, 10);
+
+            let html = selectedQuestions.map((item, i) =>
+                `<p><strong>Q${i + 1}: ${item.q}</strong></p>
+                 <textarea id="answer${i}" placeholder="Write your answer here..."></textarea>`
+            ).join("");
+
+            document.getElementById("qa-container").innerHTML = html;
+            document.getElementById("submitBtn").style.display = "block";
+        }
+
+        function submitAnswers() {
+            let domain = document.getElementById("domainSelect").value;
+            let selectedQuestions = questions[domain].slice(0, 10);
+
+            let feedbackHTML = "<h2>Results and Feedback</h2>";
+            selectedQuestions.forEach((item, i) => {
+                let userAnswer = document.getElementById(`answer${i}`).value.trim();
+                feedbackHTML += `<p><strong>Q${i + 1}: ${item.q}</strong></p>
+                                 <p><strong>Your Answer:</strong> ${userAnswer || "Not Answered"}</p>
+                                 <p><strong>Suggested Answer:</strong> ${item.a}</p>
+                                 <hr>`;
+            });
+
+            document.getElementById("result").innerHTML = feedbackHTML;
+            document.getElementById("result").style.display = "block";
+            document.getElementById("qa-container").innerHTML = "<h2>Thank you for completing the test!</h2>";
+            document.getElementById("submitBtn").style.display = "none";
+        }
+
+        function goBack() {
+            window.location.href = "coding_round.html"; // Change to actual Step 1 page
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Courses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] min-h-screen p-8">
+  <a href="start-your-journey.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+    🔙 Back
+</a>
+  <div class="container mx-auto">
+    <h1 class="text-4xl font-bold text-center text-white mb-8 drop-shadow-lg">
+      🚀 Explore Courses to Enhance Your Skills
+    </h1>
+
+    <!-- Filter Section -->
+    <div class="flex justify-center mb-8">
+      <select id="domainFilter" class="p-3 border border-gray-600 rounded-lg shadow-md bg-[#1e293b] text-gray-300 hover:bg-gray-700 transition">
+        <option value="all">🔍 Show All Domains</option>
+        <option value="AI">🤖 AI & Machine Learning</option>
+        <option value="Web Dev">🌐 Web Development</option>
+        <option value="Blockchain">⛓️ Blockchain</option>
+        <option value="Cybersecurity">🔐 Cybersecurity</option>
+        <option value="Finance">💰 Finance & Investment</option>
+        <option value="Java">☕ Java App Development</option>
+        <option value="Cloud">☁️ Cloud Computing</option>
+        <option value="Data Science">📊 Data Science</option>
+      </select>
+    </div>
+
+    <!-- Courses Container -->
+    <div id="coursesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+    <!-- Discover More Button -->
+    <div class="flex justify-center mt-8">
+      <button id="discoverMoreBtn" class="bg-[#2563eb] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#1e40af] hover:scale-105 hover:shadow-xl transition-all">
+        🔥 Discover More Courses
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const coursesContainer = document.getElementById("coursesContainer");
+    const domainFilter = document.getElementById("domainFilter");
+    const discoverMoreBtn = document.getElementById("discoverMoreBtn");
+
+    const courses = [
+      { title: "Introduction to Machine Learning", domain: "AI", description: "Learn the basics of machine learning and artificial intelligence using Python.", link: "https://www.udemy.com/course/introduction-to-machine-learning-using-python/", level: "Beginner" },
+      { title: "Deep Learning with TensorFlow", domain: "AI", description: "A comprehensive course on deep learning using TensorFlow.", link: "https://www.udemy.com/course/tensorflow-developer-certificate-machine-learning-zero-to-mastery/", level: "Intermediate" },
+      { title: "Full-Stack Web Development", domain: "Web Dev", description: "Become a full-stack web developer with hands-on real world projects.", link: "https://www.udemy.com/topic/full-stack-web-development/", level: "Beginner" },
+      { title: "React for Beginners", domain: "Web Dev", description: "Learn React.js and build interactive web applications.", link: "https://www.freecodecamp.org/news/get-started-with-react-for-beginners/", level: "Beginner" },
+      { title: "Blockchain Fundamentals", domain: "Blockchain", description: "Understand the fundamentals of blockchain technology.", link: "https://www.coursera.org/learn/blockchain-basics", level: "Beginner" },
+      { title: "Advanced Blockchain Development", domain: "Blockchain", description: "Master smart contract development on Ethereum.", link: "https://www.coursera.org/learn/advanced-blockchain-architecture", level: "Advanced" },
+      { title: "Cybersecurity Essentials", domain: "Cybersecurity", description: "Learn the essentials of cybersecurity and network protection.", link: "https://www.coursera.org/learn/introduction-to-cybersecurity-essentials", level: "Beginner" },
+      { title: "Ethical Hacking", domain: "Cybersecurity", description: "Learn ethical hacking techniques to protect systems.", link: "https://www.udemy.com/topic/ethical-hacking/", level: "Intermediate" },
+      { title: "Investment Strategies 101", domain: "Finance", description: "An introduction to investment strategies and financial planning.", link: "https://www.udemy.com/course/online-investing-guide/", level: "Beginner" },
+      { title: "Java Programming Masterclass", domain: "Java", description: "Master Java programming with hands-on projects.", link: "https://www.udemy.com/course/java-the-complete-java-developer-course/", level: "Beginner" },
+      { title: "Cloud Computing with AWS", domain: "Cloud", description: "Learn cloud computing fundamentals and AWS services.", link: "https://www.coursera.org/courses?query=aws", level: "Intermediate" },
+      { title: "Data Science with Python", domain: "Data Science", description: "Learn data analysis and machine learning using Python.", link: "https://www.coursera.org/learn/python-data-analysis", level: "Beginner" },
+    ];
+
+    let index = 0;
+    let filteredCourses = [...courses];
+
+    function loadCourses(initialLoad = false) {
+      const limit = initialLoad ? 6 : filteredCourses.length;
+      let displayedCount = 0;
+
+      while (displayedCount < limit && index < filteredCourses.length) {
+        const course = filteredCourses[index];
+        const card = document.createElement("div");
+        card.className = "bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105 border border-[#475569] text-gray-200";
+        card.innerHTML = `
+          <h2 class="text-2xl font-semibold text-white">${course.title}</h2>
+          <p class="text-gray-400 mt-2">${course.description}</p>
+          <div class="mt-4 flex justify-center">
+            <a href="${course.link}" target="_blank" class="w-full">
+              <button class="bg-[#2563eb] text-white px-4 py-2 rounded-md w-full hover:bg-[#1e40af] transition shadow-md hover:shadow-lg">
+                📖 View Course
+              </button>
+            </a>
+          </div>
+        `;
+        coursesContainer.appendChild(card);
+        index++;
+        displayedCount++;
+      }
+
+      if (index >= filteredCourses.length) {
+        discoverMoreBtn.style.display = "none";
+      } else {
+        discoverMoreBtn.style.display = "block";
+      }
+    }
+
+    function filterCourses() {
+      const selectedDomain = domainFilter.value;
+      index = 0;
+      coursesContainer.innerHTML = "";
+      filteredCourses = selectedDomain === "all" ? [...courses] : courses.filter(c => c.domain === selectedDomain);
+
+      if (filteredCourses.length === 0) {
+        coursesContainer.innerHTML = `<p class="text-center text-gray-400 text-xl">❌ No courses available for this domain.</p>`;
+        discoverMoreBtn.style.display = "none";
+      } else {
+        loadCourses(true);
+      }
+    }
+
+    loadCourses(true);
+    discoverMoreBtn.addEventListener("click", () => loadCourses());
+    domainFilter.addEventListener("change", filterCourses);
+  </script>
+</body>
+</html>
+
+
+

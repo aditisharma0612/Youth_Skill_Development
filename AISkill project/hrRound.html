@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Interview Round</title>
+    <style>
+        body {
+            background-color: black;
+            color: lightblue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid lightblue;
+            box-shadow: 0 0 15px lightblue;
+            border-radius: 10px;
+        }
+        button {
+            background-color: lightblue;
+            border: none;
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #question-container {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        #navigation {
+            display: flex;
+            justify-content: space-between;
+        }
+        /* #back-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+        } */
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #1f2937; /* Dark gray (gray-800) */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 10px lightblue;
+        transition: background 0.3s ease;
+    }
+    .back-button:hover {
+        background-color: #374151; /* Slightly lighter gray (gray-700) */
+    }
+        #result {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .suggestion {
+            display: none;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <a href="mockInterview.html" class="back-button">🔙 Back</a>
+    
+    
+    <h1>HR Interview Round</h1>
+
+    <div id="container">
+        <div id="question-container"></div>
+
+        <button onclick="showSuggestion()">Show Answer Suggestion</button>
+        <p class="suggestion" id="suggestion"></p>
+
+        <div id="navigation">
+            <button onclick="prevQuestion()">Previous</button>
+            <button onclick="nextQuestion()">Next</button>
+        </div>
+
+        <button id="submitBtn" onclick="showResults()" style="display: none;">Submit</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        let questions = [
+            { q: "Tell me about yourself.", suggestion: "Give a structured answer with past experience, current work, and future goals." },
+            { q: "Why do you want to work here?", suggestion: "Talk about the company's values, culture, and how you align with them." },
+            { q: "What are your strengths and weaknesses?", suggestion: "Mention a relevant strength and a weakness you're improving on." },
+            { q: "Describe a challenge you faced at work and how you handled it.", suggestion: "Give a STAR method (Situation, Task, Action, Result) response." },
+            { q: "Where do you see yourself in five years?", suggestion: "Talk about career growth and how the role fits your future plans." },
+            { q: "Why should we hire you?", suggestion: "Mention your skills, experience, and cultural fit for the company." },
+            { q: "Tell me about a time you worked in a team.", suggestion: "Describe teamwork experience and the impact you made." },
+            { q: "How do you handle pressure and tight deadlines?", suggestion: "Explain time management and stress-handling techniques." },
+            { q: "Have you ever had a conflict with a coworker? How did you resolve it?", suggestion: "Talk about a professional resolution approach." },
+            { q: "Do you have any questions for us?", suggestion: "Ask insightful questions about the company, role, or expectations." }
+        ];
+
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+
+        function displayQuestion() {
+            let qData = questions[currentQuestionIndex];
+            document.getElementById("question-container").innerHTML = `<p>${currentQuestionIndex + 1}. ${qData.q}</p>
+                <textarea id="answer" rows="3" cols="50" placeholder="Your answer..."></textarea>`;
+            document.getElementById("suggestion").innerText = qData.suggestion;
+            document.getElementById("suggestion").style.display = "none";
+        }
+
+        function showSuggestion() {
+            document.getElementById("suggestion").style.display = "block";
+        }
+
+        function nextQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                document.getElementById("submitBtn").style.display = "block";
+            }
+        }
+
+        function prevQuestion() {
+            saveAnswer();
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function saveAnswer() {
+            let answer = document.getElementById("answer").value;
+            userAnswers[currentQuestionIndex] = answer;
+        }
+
+        function showResults() {
+            saveAnswer();
+            let resultHTML = "<h2>Interview Summary</h2>";
+            questions.forEach((q, index) => {
+                resultHTML += `<p><b>Q${index + 1}:</b> ${q.q}<br>
+                    <b>Your Answer:</b> ${userAnswers[index] || "Not Answered"}<br>
+                    <b>AI Suggestion:</b> ${q.suggestion}</p><hr>`;
+            });
+            document.getElementById("container").style.display = "none";
+            document.getElementById("result").innerHTML = resultHTML;
+            document.getElementById("result").style.display = "block";
+        }
+
+        function goBack() {
+            window.location.href = "mock_interview.html";
+        }
+
+        // Load first question
+        displayQuestion();
+    </script>
+
+</body>
+</html>

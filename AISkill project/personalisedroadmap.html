@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Mastery Roadmap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Main Container */
+        #roadmap-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+            gap: 10px; /* Reduced gap between form and right content */
+        }
+
+        /* Left Section */
+        #left-section {
+            flex: 2;
+        }
+
+        #left-section h1 {
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        #left-section h1::after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 4px;
+            background-color: #4CAF50;
+            margin-top: 5px;
+        }
+
+        #form-container {
+            background-color: #ffffff;
+            border: 1px solid #4CAF50;
+            border-radius: 8px;
+            padding: 20px; /* Increased padding for better spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            max-width: 490px; /* Increased width of the form */
+        }
+
+        #form-container h3 {
+            font-size: 1.3rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        #form-container label {
+            font-size: 0.9rem;
+            color: #333;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        #form-container input {
+            width: 100%;
+            padding: 10px; /* Increased padding for input fields */
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #form-container button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px; /* Slightly larger button */
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #form-container button:hover {
+            background-color: #45a049;
+        }
+
+        /* Right Section */
+        #right-section {
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #right-section h2 {
+            font-size: 1.3rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        #right-section p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .step {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f3fdf3;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="roadmap-container">
+        <!-- Left Section -->
+        <div id="left-section">
+            <!-- Main Heading -->
+            <h1>Your Path to Skill Mastery: Personalized Roadmap</h1>
+
+            <!-- Form -->
+            <div id="form-container">
+                <h3>Get Your Personalized Roadmap</h3>
+                <form id="roadmap-form">
+                    <label for="skills">Your Current Skills:</label>
+                    <input type="text" id="skills" name="skills" placeholder="E.g., HTML, CSS, Python">
+
+                    <label for="goal">Your Career Goal:</label>
+                    <input type="text" id="goal" name="goal" placeholder="E.g., Web Developer, Data Analyst">
+
+                    <label for="time">Time Available (hours/week):</label>
+                    <input type="number" id="time" name="time" min="1" max="40">
+
+                    <button type="submit">Generate Roadmap</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div id="right-section">
+            <h2>Your Skill Development Roadmap</h2>
+            <p>Follow a structured and personalized journey to achieve your goals:</p>
+            <div class="step">
+                <h3>Step 1: Assess Your Skills</h3>
+                <p>Start by analyzing your current skillset to identify strengths and improvement areas.</p>
+            </div>
+            <div class="step">
+                <h3>Step 2: Set Your Goals</h3>
+                <p>Define your career aspirations and choose the skills you want to develop to achieve them.</p>
+            </div>
+            <div class="step">
+                <h3>Step 3: Personalized Learning</h3>
+                <p>Receive AI-driven course recommendations tailored to your goals and skill gaps.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

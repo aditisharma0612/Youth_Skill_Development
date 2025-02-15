@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Job Skill Gap Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="stylee.css">
+</head>
+<body class="bg-gray-900 text-white">
+
+    <a href="start-your-journey.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+
+    <div class="max-w-3xl mx-auto mt-10 p-6 bg-gray-800 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-4 text-center">🚀 Job Skill Gap Analysis</h2>
+
+        <label class="block mb-2">Choose a Domain:</label>
+        <select id="domain" class="w-full p-2 mb-4 bg-gray-700 text-white rounded" onchange="populateJobs()">
+            <option value="">--Select Domain--</option>
+            <option value="tech">Technology</option>
+            <option value="marketing">Marketing</option>
+            <option value="business">Business</option>
+            <option value="design">Design</option>
+        </select>
+
+        <label class="block mb-2">Select Your Desired Job Role:</label>
+        <select id="job-role" class="w-full p-2 mb-4 bg-gray-700 text-white rounded" disabled>
+            <option value="">--Select Job Role--</option>
+        </select>
+
+        <label class="block mb-2">Enter Your Current Skills:</label>
+        <input type="text" id="user-skills" class="w-full p-2 mb-4 bg-gray-700 text-white rounded" 
+            placeholder="Type your skills... (e.g., Python, SQL, React)" 
+            oninput="showSuggestions()">
+
+        <button class="w-full p-2 bg-blue-600 hover:bg-blue-800 rounded transition"
+            onclick="analyzeSkills()">Analyze Skill Gap</button>
+
+        <div id="results" class="mt-6"></div>
+    </div>
+
+
+    <div class="flex justify-center items-center h-32" button onclick="window.location.href='advanced_features.html'" class="bg-blue-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+        Explore Advanced Features 🚀
+    </button>
+    
+
+    <script src="jobskillgap.js"></script>
+
+</body>
+</html>

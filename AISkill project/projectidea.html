@@ -1,0 +1,117 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-Based Project Ideas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] min-h-screen p-8">
+    <a href="start-your-journey.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+
+    <h1 class="text-4xl font-bold text-center text-white mb-8 drop-shadow-lg">🚀 Explore Unique Project Ideas</h1>
+
+    <div class="flex justify-center mb-6">
+        <select id="skillFilter" class="p-3 border border-gray-600 rounded-lg shadow-md bg-[#1e293b] text-gray-300 hover:bg-gray-700 transition">
+            <option value="all">🔍 Show All Domains</option>
+            <option value="AI">🤖 AI & Machine Learning</option>
+            <option value="Web Dev">🌐 Web Development</option>
+            <option value="Blockchain">⛓️ Blockchain</option>
+            <option value="Cybersecurity">🔐 Cybersecurity</option>
+            <option value="Finance">💰 Finance & Investment</option>
+            <option value="Java">☕ Java App Development</option>
+            <option value="Cloud">☁️ Cloud Computing</option>
+            <option value="Game">🎮 Game Development</option>
+            <option value="Data Science">📊 Data Science</option>
+            <option value="IoT">🌍 Internet of Things (IoT)</option>
+        </select>
+    </div>
+
+    <div id="projectContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+    <div class="flex justify-center mt-8">
+        <button id="discoverMoreBtn" class="bg-[#2563eb] text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#1e40af] hover:scale-105 hover:shadow-xl transition-all">
+            🔥 Discover More Projects
+        </button>
+    </div>
+
+    <script>
+        const container = document.getElementById("projectContainer");
+        const discoverMoreBtn = document.getElementById("discoverMoreBtn");
+        const skillFilter = document.getElementById("skillFilter");
+
+        const projects = [
+            { name: "AI-Powered Resume Analyzer", skill: "AI", description: "Analyzes resumes using AI to match job roles.", link: "project-details.html?id=resume-analyzer" },
+            { name: "AI Chatbot for Mental Health", skill: "AI", description: "A chatbot providing emotional support and resources.", link: "project-details.html?id=ai-chatbot" },
+            { name: "Fake News Detection System", skill: "AI", description: "Detects misinformation using machine learning.", link: "project-details.html?id=fake-news-detection" },
+            { name: "Handwritten Digit Recognition", skill: "AI", description: "Recognizes handwritten numbers using neural networks.", link: "project-details.html?id=handwritten-digit-recognition" },
+            { name: "AI-Based Code Generator", skill: "AI", description: "Generates code snippets based on descriptions.", link: "project-details.html?id=aibased-code-generator" },
+            { name: "Real-Time Weather App", skill: "Web Dev", description: "Displays live weather data with a beautiful UI.", link: "project-details.html?id=realtime-weather-app" },
+            { name: "E-Commerce Website", skill: "Web Dev", description: "Build a full-fledged online store.", link: "project-details.html?id=ecommerce-website" },
+            { name: "Portfolio Website", skill: "Web Dev", description: "Create a personal portfolio to showcase projects.", link: "project-details.html?id=portfolio-site" },
+            { name: "Blockchain-Based Voting System", skill: "Blockchain", description: "A secure, tamper-proof online voting system.", link: "project-details.html?id=blockchain-based-votingsystem" },
+            { name: "Secure File Encryption Tool", skill: "Cybersecurity", description: "Encrypts files using advanced algorithms.", link: "project-details.html?id=securefile-encryption-tool" },
+            { name: "Stock Market Prediction", skill: "Finance", description: "Predicts stock prices using AI models.", link: "project-details.html?id=stock-prediction" },
+            { name: "Cloud File Storage System", skill: "Cloud", description: "Secure cloud-based storage solution.", link: "project-details.html?id=cloud-file-storage-system" },
+            { name: "Smart Home Automation", skill: "IoT", description: "Automates home appliances using IoT.", link: "project-details.html?id=smart-home-automation" },
+        ];
+
+        let index = 0;
+        let filteredProjects = [...projects];
+
+        function loadProjects(initialLoad = false) {
+            const limit = initialLoad ? 6 : filteredProjects.length;
+            let displayedCount = 0;
+
+            while (displayedCount < limit && index < filteredProjects.length) {
+                const project = filteredProjects[index];
+                const card = document.createElement("div");
+                card.className = "bg-[#1e293b] p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:scale-105 border border-[#475569] text-gray-200";
+                card.innerHTML = `
+                    <h2 class="text-2xl font-semibold text-white">${project.name}</h2>
+                    <p class="text-gray-400 mt-2">${project.description}</p>
+                    <div class="mt-4 flex justify-center">
+                        <a href="${project.link}" target="_blank" class="w-full">
+                            <button class="bg-[#2563eb] text-white px-4 py-2 rounded-md w-full hover:bg-[#1e40af] transition shadow-md hover:shadow-lg">
+                                📖 View Full Project Guide
+                            </button>
+                        </a>
+                    </div>
+                `;
+                container.appendChild(card);
+                index++;
+                displayedCount++;
+            }
+
+            if (index >= filteredProjects.length) {
+                discoverMoreBtn.style.display = "none";
+            } else {
+                discoverMoreBtn.style.display = "block";
+            }
+        }
+
+        function filterProjects() {
+            const selectedSkill = skillFilter.value;
+            index = 0;
+            container.innerHTML = "";
+            filteredProjects = selectedSkill === "all" ? [...projects] : projects.filter(p => p.skill === selectedSkill);
+
+            if (filteredProjects.length === 0) {
+                container.innerHTML = `<p class="text-center text-gray-400 text-xl">❌ No projects available for this category.</p>`;
+                discoverMoreBtn.style.display = "none";
+            } else {
+                loadProjects(true);
+            }
+        }
+
+        loadProjects(true);
+        discoverMoreBtn.addEventListener("click", () => loadProjects());
+        skillFilter.addEventListener("change", filterProjects);
+    </script>
+</body>
+</html>

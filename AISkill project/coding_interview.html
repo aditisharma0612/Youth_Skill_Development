@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Round</title>
+    <style>
+        body {
+            background-color: black;
+            color: lightblue;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #coding-container {
+            width: 70%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid lightblue;
+            box-shadow: 0 0 15px lightblue;
+            border-radius: 10px;
+            text-align: left;
+        }
+        button {
+            background-color: lightblue;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .difficulty-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid lightblue;
+            border-radius: 5px;
+        }
+        .question {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid lightblue;
+        }
+        .leetcode-link {
+            color: orange;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .leetcode-link:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #1f2937; /* Dark gray (gray-800) */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 10px lightblue;
+        transition: background 0.3s ease;
+    }
+    .back-button:hover {
+        background-color: #374151; /* Slightly lighter gray (gray-700) */
+    }
+    </style>
+</head>
+<body>
+    
+    <a href="mockInterview.html" class="back-button">🔙 Back</a>
+    
+
+    <h1>Coding Round</h1>
+    <div id="coding-container">
+        <h2>Select Difficulty:</h2>
+        <select id="difficultySelect" onchange="displayQuestions()">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+
+        <div id="questions-container"></div>
+    </div>
+
+    <script>
+        let questions = {
+            "easy": [
+                { q: "Two Sum", link: "https://leetcode.com/problems/two-sum/" },
+                { q: "Reverse a String", link: "https://leetcode.com/problems/reverse-string/" },
+                { q: "Valid Parentheses", link: "https://leetcode.com/problems/valid-parentheses/" },
+                { q: "Merge Two Sorted Lists", link: "https://leetcode.com/problems/merge-two-sorted-lists/" },
+                { q: "Find Duplicate Number", link: "https://leetcode.com/problems/find-the-duplicate-number/" }
+            ],
+            "medium": [
+                { q: "Longest Substring Without Repeating Characters", link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/" },
+                { q: "Container With Most Water", link: "https://leetcode.com/problems/container-with-most-water/" },
+                { q: "3Sum", link: "https://leetcode.com/problems/3sum/" },
+                { q: "Spiral Matrix", link: "https://leetcode.com/problems/spiral-matrix/" },
+                { q: "Word Search", link: "https://leetcode.com/problems/word-search/" }
+            ],
+            "hard": [
+                { q: "Merge K Sorted Lists", link: "https://leetcode.com/problems/merge-k-sorted-lists/" },
+                { q: "Trapping Rain Water", link: "https://leetcode.com/problems/trapping-rain-water/" },
+                { q: "Edit Distance", link: "https://leetcode.com/problems/edit-distance/" },
+                { q: "N-Queens", link: "https://leetcode.com/problems/n-queens/" },
+                { q: "Minimum Window Substring", link: "https://leetcode.com/problems/minimum-window-substring/" }
+            ]
+        };
+
+        function displayQuestions() {
+            let difficulty = document.getElementById("difficultySelect").value;
+            let questionList = questions[difficulty];
+
+            let questionHTML = questionList.map((q, index) => `
+                <div class="question">
+                    <input type="checkbox" id="q${index}">
+                    <label for="q${index}">${q.q}</label>
+                    <a href="${q.link}" target="_blank" class="leetcode-link">[LeetCode]</a>
+                </div>
+            `).join("");
+
+            document.getElementById("questions-container").innerHTML = `
+                <div class="difficulty-section">
+                    <h3>${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)} Level</h3>
+                    ${questionHTML}
+                </div>
+            `;
+        }
+
+        function goBack() {
+            window.location.href = "mock_interview.html";
+        }
+
+        // Display easy questions by default
+        displayQuestions();
+    </script>
+
+</body>
+</html>

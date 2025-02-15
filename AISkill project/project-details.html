@@ -1,0 +1,444 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+    <a href="projectidea.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+    <div class="container mx-auto p-6">
+        <div id="projectDetails" class="bg-white p-6 rounded-lg shadow-lg">
+            <!-- Project details will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get("id");
+
+        const projectData = {
+            "resume-analyzer": {
+                title: "AI-Powered Resume Analyzer",
+                overview: "This project helps users analyze resumes using AI models and suggests improvements.",
+                techStack: ["Python", "NLP", "Flask"],
+                steps: [
+                    "Step 1: Set up Python environment.",
+                    "Step 2: Train AI model using NLP.",
+                    "Step 3: Build Flask API for resume analysis.",
+                    "Step 4: Deploy the model online."
+                ],
+                github: "https://github.com/example/resume-analyzer",
+                liveDemo: "https://resume-demo.com"
+            },
+            "ai-chatbot": {
+                title: "AI Chatbot for Mental Health",
+                overview: "A chatbot that provides mental health support using AI.",
+                techStack: ["HTML", "CSS", "JavaScript"],
+                steps: [
+                    "Step 1: Create a chat interface.",
+                    "Step 2: Implement response system using keywords.",
+                    "Step 3: Style using Tailwind CSS.",
+                    "Step 4: Add message handling logic in JavaScript."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "handwritten-digit-recognition": {
+                title: " Handwritten Digit Recognition",
+                overview: "A machine learning project that recognizes handwritten digits using a deep learning model trained on the MNIST dataset",
+                techStack: ["Python", "TensorFlow/Keras"," OpenCV", "Flask"],
+                steps: [
+                    "Step 1: Collect and preprocess the MNIST dataset.",
+                    "Step 2: Build a Convolutional Neural Network (CNN) for digit classification.",
+                    "Step 3: Train the model and save it.",
+                    "Step 4: Create a Flask API to take user input (handwritten digits)",
+                    "Step 5: Use OpenCV for image processing and prediction.",
+                    "Step 6: Deploy the model on a web app."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "aibased-code-generator": {
+                title: " AI-Based Code Generator",
+                overview: "This project allows users to generate code snippets in various programming languages based on natural language prompts using AI.",
+                techStack: ["Python", "GPT-4 API", "Flask, JavaScript", "HTML/CSS"],
+                steps: [
+                    "Step 1: Set up OpenAI’s GPT API for code generation.",
+                    "Step 2: Build a Flask API to handle user requests.",
+                    "Step 3: Design a simple front-end with an input box for prompts.",
+                    "Step 4: Process the response and format it in the desired programming language.",
+                    "Step 5: Add syntax highlighting for better readability.",
+                    "Step 6: Deploy on a cloud platform like Heroku or Vercel."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+
+            "realtime-weather-app": {
+                title: "Real-Time Weather App",
+                overview: "A simple weather app that fetches real-time weather data using an API and displays it to the user.",
+                techStack: ["HTML", "CSS", "JavaScript", "OpenWeather API"],
+                steps: [
+                    "Step 1: Create an HTML structure with a search bar and weather display section.",
+                    "Step 2: Use JavaScript to fetch live weather data from OpenWeather API.",
+                    "Step 3: Display temperature, humidity, and wind speed dynamically.",
+                    "Step 4: Implement a search feature for different cities.",
+                    "Step 5: Optimize UI for mobile responsiveness."
+                ],
+                github: "https://github.com/example/resume-analyzer",
+                liveDemo: "https://resume-demo.com"
+            },
+            "ecommerce-website": {
+                title: "  E-commerce Website",
+                overview: "A fully functional e-commerce website where users can browse products, add items to a cart, and complete purchases.",
+                techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "Stripe API"],
+                steps: [
+                    "Step 1: Design the frontend with HTML, CSS, and JavaScript.",
+                    "Step 2: Set up a backend with Node.js and Express.js for product management.",
+                    "Step 3: Store user and product data in MongoDB.",
+                    "Step 4: Implement user authentication (login, signup).",
+                    "Step 5: Integrate Stripe API for payment processing.",
+                    "Step 6: Deploy on Heroku/Vercel."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "portfolio-site": {
+                title: "Personal Portfolio Website",
+                overview: "A responsive personal portfolio showcasing projects and skills.",
+                techStack: ["HTML", "CSS", "JavaScript"],
+                steps: [
+                    "Step 1: Create a homepage with an introduction.",
+                    "Step 2: Add sections for projects and skills.",
+                    "Step 3: Implement a contact form.",
+                    "Step 4: Make the site fully responsive."
+                ],
+                github: "https://github.com/example/portfolio-site",
+                liveDemo: "https://portfolio-demo.com"
+            },
+            "blogging-platform": {
+                title: "  Blogging Platform",
+                overview: "A blogging platform where users can write, edit, and publish blog posts.",
+                techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB"],
+                steps: [
+                    "Step 1: Create an HTML/CSS layout for blogs.",
+                    "Step 2: Set up a Node.js backend to handle posts and users",
+                    "Step 3: Use MongoDB to store blogs and comments",
+                    "Step 4: Implement user authentication.",
+                    "Step 5: Add a rich text editor for writing posts.",
+                    "Step 6: Deploy on Vercel."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+
+            "blockchain-based-votingsystem": {
+                title: "  Blockchain-Based Voting System",
+                overview: "A secure, transparent voting system using blockchain to prevent election fraud.",
+                techStack: ["Solidity", "Ethereum", "React", "Node.js", "MetaMask", "Web3.js"],
+                steps: [
+                    "Step 1: Create a smart contract in Solidity for secure voting.",
+                    "Step 2: Deploy the contract on the Ethereum blockchain.",
+                    "Step 3: Build a React frontend for users to vote",
+                    "Step 4: Integrate Web3.js for blockchain interactions.",
+                    "Step 5: Use MetaMask for authentication.",
+                    "Step 6: Deploy using Infura/IPFS."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "decentralized-identity-verification": {
+                title: "  Decentralized Identity Verification",
+                overview: "A blockchain-based identity verification system to eliminate fake identities.",
+                techStack: ["Solidity", "Ethereum", "React", "Node.js", "MetaMask", "IPFS"],
+                steps: [
+                    "Step 1: Develop a Solidity smart contract for storing verified identities.",
+                    "Step 2: Use Ethereum blockchain for decentralized identity management.",
+                    "Step 3: Build a React frontend for users to upload identity documents.",
+                    "Step 4: Store identity proofs securely on IPFS.",
+                    "Step 5: Authenticate users via MetaMask wallet.",
+                    "Step 6: Deploy using Ethereum Testnet."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "cryptowallet-system": {
+                title: "  Crypto Wallet System",
+                overview: "A secure application that allows users to store, send, and receive cryptocurrencies, providing functionalities like transaction history, balance tracking, and wallet backups.",
+                techStack: ["React.js","Node.js","Express.js","Web3.js","MongoDB","ECC"],
+                steps: [
+                    "Step 1: Set Up the Development Environment",
+                    "Step 2: Design the User Interface",
+                    "Step 3: Implement User Authentication",
+                    "Step 4: Integrate Blockchain Functionality",
+                    "Step 5: Develop Core Features And Ensure Security",
+                    "Step 6: Testing and Deployment."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+
+            "cybersecurity-threat-detector": {
+                title: "  Cybersecurity Threat Detector",
+                overview: "A system designed to monitor network traffic and system logs to detect potential security threats using machine learning algorithms.",
+                techStack: ["Python","Scikit-learn","Pandas","NumPy","Elasticsearch","Kibana"],
+                steps: [
+                    "Step 1: Data Collection And Data Preprocessing",
+                    "Step 2: Feature Engineering:",
+                    "Step 3: Model Training",
+                    "Step 4: Integration with Elasticsearch",
+                    "Step 5: Visualization with Kibana",
+                    "Step 6: Testing and Deployment."
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+            "securefile-encryption-tool": {
+                title: "   Secure File Encryption Tool",
+                overview: "A lightweight application that allows users to encrypt and decrypt files using robust encryption algorithms to ensure data confidentiality.",
+                techStack: ["Python","Tkinter","PyCryptodome"],
+                steps: [
+                    "Step 1: Set Up the Environment",
+                    "Step 2: Design the User Interface:",
+                    "Step 3: Implement Encryption and Decryption Functions",
+                    "Step 4: File Handling",
+                    "Step 5: Testing",
+                    "Step 6: Packaging"
+                ],
+                github: "https://github.com/example/ai-chatbot",
+                liveDemo: "https://ai-chatbot-demo.com"
+            },
+
+            "finance-tracker": {
+                title: "Personal Finance Tracker",
+                overview: "Track expenses and income with an interactive dashboard.",
+                techStack: ["HTML", "CSS", "JavaScript", "LocalStorage"],
+                steps: [
+                    "Step 1: Create input form for adding transactions.",
+                    "Step 2: Display transactions dynamically.",
+                    "Step 3: Store transactions using LocalStorage.",
+                    "Step 4: Style the UI using Tailwind CSS."
+                ],
+                github: "https://github.com/example/finance-tracker",
+                liveDemo: "https://finance-tracker-demo.com"
+            },
+            "stock-prediction": {
+               title: "Stock Market Prediction Using Machine Learning",
+               overview: "This project uses historical stock data and machine learning algorithms to predict future stock prices. It helps users understand time-series forecasting and financial data analysis while demonstrating how to build and deploy a predictive model.",
+               techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow/Keras", "Matplotlib", "Flask"],
+               steps: [
+                   "Step 1: Collect historical stock data using Yahoo Finance API (e.g., using yfinance library).",
+                   "Step 2: Preprocess the data: clean, handle missing values, and normalize features.",
+                  "Step 3: Perform exploratory data analysis using Matplotlib/Seaborn to visualize trends.",
+                  "Step 4: Train a machine learning model (e.g., Linear Regression, Random Forest, or LSTM for time-series prediction).",
+                  "Step 5: Evaluate the model performance using metrics such as RMSE or MAE.",
+                   "Step 6: Build a Flask web application to display predictions.",
+                   "Step 7: Deploy the application on a cloud platform like Heroku."
+                ],
+               github: "https://github.com/example/stock-market-prediction",
+               liveDemo: "https://stock-market-prediction-demo.com"
+          }, 
+         
+          "online-code-compiler": {
+               title: "Online Code Compiler",
+               overview: "A web-based tool that allows users to write, execute, and debug code in multiple programming languages in real time. It features an in-browser code editor with syntax highlighting and a secure backend for code execution.",
+               techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "Docker (or sandboxing)"],
+               steps: [
+                  "Step 1: Set up the front-end using an online code editor library (e.g., CodeMirror or Ace Editor).",
+                  "Step 2: Develop a Node.js/Express backend to receive code submissions.",
+                  "Step 3: Configure a sandbox environment (using Docker or a similar tool) for secure code execution.",
+                  "Step 4: Process the code and capture the output and errors.",
+                  "Step 5: Display the execution results on the front-end in real time.",
+                  "Step 6: Ensure proper security measures to prevent code injection or abuse."
+               ],
+              github: "https://github.com/example/online-code-compiler",
+              liveDemo: "https://online-code-compiler-demo.com"
+            },
+          "elibrary-management": {
+             title: "E-Library Management System",
+             overview: "A digital library system that enables users to search for, borrow, and manage e-books and academic resources. The system includes features for user registration, catalog management, and digital checkout.",
+             techStack: ["HTML", "CSS", "JavaScript", "PHP (or Node.js)", "MySQL", "Bootstrap"],
+             steps: [
+               "Step 1: Design a user-friendly front-end for browsing and searching library resources.",
+               "Step 2: Implement user authentication and registration functionalities.",
+               "Step 3: Develop backend APIs to manage the digital catalog and handle borrowing/returning of resources.",
+               "Step 4: Integrate a reservation system for high-demand books.",
+               "Step 5: Build an admin dashboard for catalog management.",
+                "Step 6: Deploy the system on a web server with secure hosting."
+              ],
+             github: "https://github.com/example/elibrary-management",
+             liveDemo: "https://elibrary-management-demo.com"
+           },
+         "student-attendance-management": {
+             title: "Student Attendance Management System",
+             overview: "A comprehensive system for tracking and managing student attendance in educational institutions. The application provides real-time attendance tracking, reporting, and analytics for administrators and teachers.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js (or PHP)", "MySQL", "Firebase (optional for real-time data)"],
+             steps: [
+                "Step 1: Create a secure login system for teachers and students.",
+                "Step 2: Develop an interface to mark attendance and record class sessions.",
+                "Step 3: Store attendance data in a relational database (e.g., MySQL).",
+                "Step 4: Implement reporting features to generate attendance summaries and analytics.",
+                "Step 5: Integrate real-time updates using Firebase or WebSockets (optional).",
+                "Step 6: Deploy the application on a reliable hosting platform."
+                 ],
+             github: "https://github.com/example/student-attendance-management",
+             liveDemo: "https://student-attendance-demo.com"
+            },
+            
+          "cloud-file-storage-system": {
+             title: "Cloud File Storage System",
+             overview: "A robust cloud storage solution that allows users to securely upload, retrieve, and manage files using cloud services such as AWS S3 or Google Cloud Storage.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "AWS S3", "MongoDB"],
+             steps: [
+                "Step 1: Design a user-friendly front-end for file uploads.",
+                "Step 2: Build a Node.js and Express backend to handle file uploads.",
+                "Step 3: Integrate AWS S3 (or a similar service) for secure file storage.",
+                "Step 4: Store file metadata in MongoDB.",
+                "Step 5: Implement user authentication to restrict access.",
+                "Step 6: Deploy the application on a cloud platform."
+              ],
+            github: "https://github.com/example/cloud-file-storage-system",
+            liveDemo: "https://cloud-file-storage-demo.com"
+           },
+          "cloud-based-task-scheduler": {
+             title: "Cloud-Based Task Scheduler",
+             overview: "A web application that allows users to schedule, manage, and automate tasks in the cloud with notifications and reminders.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB", "node-cron or Agenda"],
+             steps: [
+                "Step 1: Design a front-end interface for scheduling tasks with a calendar view.",
+                "Step 2: Build a Node.js and Express backend for task management.",
+                "Step 3: Use a scheduling library (e.g., node-cron or Agenda) to handle task execution.",
+                "Step 4: Store task data in MongoDB.",
+                "Step 5: Implement notifications via email or SMS.",
+                "Step 6: Deploy the application on a cloud platform."
+              ],
+             github: "https://github.com/example/cloud-based-task-scheduler",
+             liveDemo: "https://cloud-task-scheduler-demo.com"
+             },
+          
+          "ai-game-bot": {
+             title: "AI-Based Game Bot",
+             overview: "An intelligent bot that plays games by learning strategies using machine learning or reinforcement learning. It can adapt to different game environments and make decisions based on real-time input.",
+             techStack: ["Python", "TensorFlow/PyTorch", "Flask", "OpenAI Gym"],
+             steps: [
+               "Step 1: Set up your Python environment and install necessary libraries (TensorFlow/PyTorch, OpenAI Gym).",
+               "Step 2: Design the game environment and define the reward structure.",
+               "Step 3: Develop and train a reinforcement learning model for game playing.",
+               "Step 4: Build a Flask API to serve the model predictions.",
+               "Step 5: Create a front-end interface for users to interact with the game bot.",
+               "Step 6: Deploy the application to a cloud platform."
+            ],
+           github: "https://github.com/example/ai-game-bot",
+           liveDemo: "https://ai-game-bot-demo.com"
+           },
+          "multiplayer-chess-game": {
+             title: "Multiplayer Chess Game",
+             overview: "A real-time web-based chess game that enables multiple users to play together. The system features live move validation, chat functionality, and game history tracking.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "Socket.io", "MongoDB"],
+             steps: [
+               "Step 1: Design the chess board and UI using HTML/CSS.",
+               "Step 2: Implement chess game logic and rules in JavaScript.",
+               "Step 3: Use Socket.io to enable real-time multiplayer interactions.",
+               "Step 4: Build a Node.js/Express backend to manage game sessions and store history.",
+               "Step 5: Integrate a database (MongoDB) to save game records.",
+               "Step 6: Deploy the application for live play."
+                ],
+             github: "https://github.com/example/multiplayer-chess-game",
+             liveDemo: "https://multiplayer-chess-demo.com"
+            },
+
+          "movie-recommendation-system": {
+              title: "Movie Recommendation System",
+              overview: "A machine learning-powered system that suggests movies to users based on their viewing history and preferences using collaborative filtering techniques.",
+              techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "Flask", "HTML", "CSS", "JavaScript"],
+              steps: [
+                "Step 1: Collect and preprocess historical movie ratings data.",
+                "Step 2: Implement a recommendation algorithm (collaborative filtering or content-based).",
+                "Step 3: Train and evaluate the model using appropriate metrics.",
+                "Step 4: Build a Flask API to serve movie recommendations.",
+                "Step 5: Design a front-end to display recommendations interactively.",
+                "Step 6: Deploy the system on a cloud platform."
+               ],
+            github: "https://github.com/example/movie-recommendation-system",
+            liveDemo: "https://movie-recommendation-demo.com"
+          },
+          "customer-segmentation": {
+             title: "Customer Segmentation",
+             overview: "An analytical project that segments customers into distinct groups based on purchasing behavior using clustering algorithms. This project helps businesses tailor their marketing strategies.",
+             techStack: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Flask"],
+             steps: [
+               "Step 1: Collect customer data and perform data cleaning.",
+               "Step 2: Use clustering algorithms (e.g., K-means) to segment customers.",
+               "Step 3: Visualize customer segments using Matplotlib or Seaborn.",
+               "Step 4: Build a Flask API to display segmentation results.",
+               "Step 5: Develop a simple front-end dashboard for insights.",
+               "Step 6: Deploy the dashboard on a cloud platform."
+              ],
+            github: "https://github.com/example/customer-segmentation",
+            liveDemo: "https://customer-segmentation-demo.com"
+          },
+            
+          "smart-home-automation": {
+             title: "Smart Home Automation System",
+             overview: "A web application that enables users to remotely control and monitor home appliances using IoT devices and sensors. The system features real-time monitoring, scheduling, and device control, making homes more efficient and secure.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MQTT", "Raspberry Pi", "IoT Sensors"],
+             steps: [
+               "Step 1: Set up a central IoT hub using a Raspberry Pi with an MQTT broker.",
+               "Step 2: Develop a Node.js/Express backend to manage device commands and status.",
+               "Step 3: Create a responsive front-end interface for controlling appliances.",
+               "Step 4: Integrate various sensors and actuators with the hub.",
+               "Step 5: Implement real-time data updates using MQTT for communication.",
+               "Step 6: Test the system on a local network and deploy it to a cloud platform if needed."
+             ],
+          github: "https://github.com/example/smart-home-automation",
+          liveDemo: "https://smarthome-demo.com"
+         }, 
+         "iot-health-monitoring": {
+             title: "IoT-Based Health Monitoring System",
+             overview: "A system that continuously collects and monitors health data (such as heart rate, blood pressure, and body temperature) from wearable IoT sensors. It displays real-time data, generates alerts for abnormal readings, and provides historical data visualization for better health management.",
+             techStack: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MQTT", "InfluxDB", "Grafana", "Raspberry Pi/Arduino"],
+             steps: [
+               "Step 1: Set up wearable IoT sensors (or use a Raspberry Pi/Arduino) to collect health data.",
+               "Step 2: Configure MQTT to transmit sensor data to a central server.",
+               "Step 3: Develop a Node.js/Express backend to receive and store incoming data (using InfluxDB for time-series data).",
+               "Step 4: Create a front-end dashboard to display real-time health metrics and historical trends using Grafana or custom charts.",
+               "Step 5: Implement an alert system to notify users of any abnormal readings.",
+               "Step 6: Test the system thoroughly and deploy it on a secure network or cloud platform."
+              ],
+           github: "https://github.com/example/iot-health-monitoring",
+           liveDemo: "https://health-monitoring-demo.com"
+         }          
+        };
+
+        const project = projectData[projectId];
+        if (project) {
+            document.getElementById("projectDetails").innerHTML = `
+                <h1 class="text-2xl font-bold mb-4">${project.title}</h1>
+                <p class="text-gray-700 mb-4">${project.overview}</p>
+
+                <h2 class="text-lg font-semibold mb-2">Tech Stack:</h2>
+                <ul class="list-disc pl-6 mb-4">${project.techStack.map(tech => `<li>${tech}</li>`).join("")}</ul>
+
+                <h2 class="text-lg font-semibold mb-2">Implementation Steps:</h2>
+                <ol class="list-decimal pl-6 mb-4">${project.steps.map(step => `<li>${step}</li>`).join("")}</ol>
+
+                <div class="flex gap-4">
+                    <a href="${project.github}" target="_blank" class="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700">GitHub Code</a>
+                    <a href="${project.liveDemo}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500">Live Demo</a>
+                </div>
+            `;
+        } else {
+            document.getElementById("projectDetails").innerHTML = `<p class="text-red-600">Project not found.</p>`;
+        }
+    </script>
+
+</body>
+</html>

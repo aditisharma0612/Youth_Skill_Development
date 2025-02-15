@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SkillBridge</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* BACK BUTTON STYLING */
+    .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #1f2937; /* Dark gray */
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 10px lightblue;
+        transition: background 0.3s ease;
+    }
+    .back-button:hover {
+        background-color: #374151; /* Lighter gray */
+    }
+
+    /* LOGIN PAGE STYLING */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px lightblue;
+      text-align: center;
+      width: 350px;
+    }
+
+    .login-card h2 {
+      color: lightblue; /* Updated color for "Welcome Back!" */
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid lightblue;
+      border-radius: 5px;
+      background: black;
+      color: lightblue;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 10px;
+      background-color: lightblue;
+      border: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background-color: white;
+    }
+
+    .extra-links {
+      margin-top: 10px;
+    }
+
+    .extra-links a {
+      color: lightblue;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a href="index.html" class="back-button">🔙 Back</a>
+
+  <section class="login-wrapper">
+    <div class="login-card">
+      <h2>Welcome Back!</h2>
+      <p>Login to continue your journey with SkillBridge.</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="user-email">Email</label>
+          <input type="email" id="user-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="user-password">Password</label>
+          <input type="password" id="user-password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+        <div class="extra-links">
+          <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

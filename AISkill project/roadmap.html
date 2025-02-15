@@ -1,0 +1,115 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roadmap Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-gray-800 min-h-screen p-8 text-white">
+    <a href="index.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold text-center text-blue-300 mb-8 drop-shadow-lg">
+            📌 Choose Your Roadmap
+        </h1>
+
+        <!-- Dropdown for selecting domain -->
+        <div class="flex justify-center mb-8">
+            <select id="roadmapSelect" class="p-3 border border-gray-400 rounded-lg shadow-md bg-gray-900 text-white hover:bg-gray-700 transition">
+                <option value="AI">🤖 AI & Machine Learning</option>
+                <option value="Web Dev">🌐 Web Development</option>
+                <option value="Cybersecurity">🔐 Cybersecurity</option>
+                <option value="Data Science">📊 Data Science</option>
+                <option value="Cloud">☁ Cloud Computing</option>
+                <option value="Java">☕ Java Development</option>
+            </select>
+        </div>
+
+        <!-- Roadmap Display -->
+        <div id="roadmapContainer" class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
+            <h2 id="roadmapTitle" class="text-2xl font-semibold text-blue-400 text-center">Select a domain to see the roadmap</h2>
+            <div id="roadmapSteps" class="mt-6 space-y-4">
+                <!-- Steps will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const roadmapData = {
+            "AI": [
+                "Learn Python and Mathematics basics",
+                "Understand Machine Learning concepts",
+                "Work with Pandas, NumPy, and Scikit-learn",
+                "Master Deep Learning with TensorFlow or PyTorch",
+                "Build AI Projects & participate in Kaggle"
+            ],
+            "Web Dev": [
+                "Learn HTML, CSS, and JavaScript",
+                "Master a frontend framework (React, Vue, Angular)",
+                "Learn Backend (Node.js, Django, Flask)",
+                "Work with Databases (SQL, MongoDB)",
+                "Build projects & deploy using AWS, Firebase, or Netlify"
+            ],
+            "Cybersecurity": [
+                "Understand Networking & OS Concepts",
+                "Learn Linux and Command Line",
+                "Study Cryptography & Ethical Hacking",
+                "Explore Penetration Testing Tools",
+                "Get Certified (CEH, OSCP, CISSP)"
+            ],
+            "Data Science": [
+                "Learn Python & Data Manipulation (Pandas, NumPy)",
+                "Understand Statistics & Probability",
+                "Work with Data Visualization (Matplotlib, Seaborn)",
+                "Learn Machine Learning Algorithms",
+                "Build Projects & Work on Real-World Datasets"
+            ],
+            "Cloud": [
+                "Learn Cloud Basics (AWS, Azure, GCP)",
+                "Understand Virtualization & Kubernetes",
+                "Study Cloud Security Principles",
+                "Work with CI/CD Pipelines",
+                "Get Certified (AWS Solutions Architect, Azure Fundamentals)"
+            ],
+            "Java": [
+                "Learn Core Java & Object-Oriented Programming",
+                "Understand Data Structures & Algorithms",
+                "Work with Spring Boot & Hibernate",
+                "Build REST APIs & Microservices",
+                "Work on Real-World Java Applications"
+            ]
+        };
+
+        const roadmapSelect = document.getElementById("roadmapSelect");
+        const roadmapContainer = document.getElementById("roadmapContainer");
+        const roadmapTitle = document.getElementById("roadmapTitle");
+        const roadmapSteps = document.getElementById("roadmapSteps");
+
+        roadmapSelect.addEventListener("change", function() {
+            const selectedDomain = this.value;
+            roadmapTitle.textContent = `📌 ${selectedDomain} Roadmap`;
+
+            
+            roadmapSteps.innerHTML = "";
+
+            roadmapData[selectedDomain].forEach((step, index) => {
+                const stepElement = document.createElement("div");
+                stepElement.className = "p-4 bg-gray-800 rounded-lg shadow-md flex items-center";
+                stepElement.innerHTML = `<span class="text-lg font-bold text-blue-400 mr-4">${index + 1}.</span> <p class="text-gray-300">${step}</p>`;
+
+                
+                roadmapSteps.appendChild(stepElement);
+            });
+        });
+    </script>
+
+</body>
+</html>

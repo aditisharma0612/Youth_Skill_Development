@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Skill Development Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 min-h-screen flex flex-col items-center justify-center text-white p-6">
+    <a href="index.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+
+    <h1 id="welcome-message">Welcome!</h1>
+
+
+    
+
+
+    <!-- Heading -->
+    <h1 class="text-5xl font-extrabold text-center text-white mb-12 drop-shadow-lg animate-fade-in">
+        🚀 AI Skill Development Hub
+    </h1>
+
+    <!-- Card Section -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-6xl text-center">
+
+        <!-- Skill Analysis -->
+        <a href="skill.html" class="section-card">
+            <div class="icon">📊</div>
+            <h2>Skill Analysis</h2>
+            <p>Identify strengths & areas to improve.</p>
+        </a>
+
+        <!-- Courses -->
+        <a href="courses.html" class="section-card">
+            <div class="icon">📚</div>
+            <h2>Courses</h2>
+            <p>Explore curated learning resources.</p>
+        </a>
+
+        <!-- Projects -->
+        <a href="projectidea.html" class="section-card">
+            <div class="icon">💻</div>
+            <h2>Projects</h2>
+            <p>Work on real-world projects.</p>
+        </a>
+
+        <!-- Roadmap -->
+        <a href="notes.html" class="section-card">
+            <div class="icon">🛤</div>
+            <h2>Notes</h2>
+            <p>Structured learning path.</p>
+        </a>
+
+        <!-- Resume Builder -->
+        <a href="mockInterview.html" class="section-card">
+            <div class="icon">📄</div>
+            <h2>Mock Interview Prep</h2>
+            <p>Ace your next interview.</p>
+        </a>
+
+        <!-- Mock Interview -->
+        <a href="jobskillgap.html" class="section-card">
+            <div class="icon">🎤</div>
+            <h2>Job Skill Gap</h2>
+            <p>Understand your job skill gap.</p>
+        </a>
+
+    </div>
+
+    <!-- Tailwind Custom Styles -->
+    <style>
+        /* Card Design */
+        .section-card {
+            @apply p-6 rounded-xl text-white text-center font-bold text-lg cursor-pointer transition-all duration-300 transform shadow-lg w-72 h-64 flex flex-col justify-center items-center no-underline;
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Icon Styling */
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 14px;
+        }
+
+        /* Hover Effects */
+        .section-card:hover {
+            transform: translateY(-8px) scale(1.07);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Fade-in Animation */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+<script src="start-your-journey.js"></script>
+
+
+</body>
+</html>

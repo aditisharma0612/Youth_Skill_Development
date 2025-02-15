@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Hub</title>
+    
+    <script src="skill_tracker.js" defer></script>
+    <script src="mentor_connect.js" defer></script>
+    <script src="ai_quiz.js" defer></script>
+    <script src="coding_challenges.js" defer></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-8"  >
+    <a href="start-your-journey.html" class="absolute top-4 left-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded flex items-center">
+        🔙 Back
+    </a>
+
+    <!-- Page Title -->
+    <h1 class="text-3xl font-bold text-center mb-6">🚀 Skill Hub</h1>
+
+    <!-- Skill Dashboard -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+
+        <!-- 1️⃣ Your Skills -->
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white/20 text-white hover:scale-105 transition">
+            <h3 class="text-2xl font-bold">📌 Your Skills</h3>
+            <p class="text-gray-300 mt-2">Track and improve your skills with progress tracking.</p>
+            <input id="new-skill" type="text" placeholder="Enter a skill..." class="text-black mt-3 p-2 rounded w-full">
+            <button onclick="addSkill()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded mt-3">
+                Add Skill
+            </button>
+            <ul id="skill-list" class="mt-4 text-yellow-300"></ul>
+        </div>
+
+        <!-- 2️⃣ AI Skill Quiz -->
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white/20 text-white hover:scale-105 transition">
+            <h3 class="text-2xl font-bold">🧠 AI Skill Quiz</h3>
+            
+            <!-- Skill Selection Dropdown -->
+            <label for="skill-dropdown" class="block mt-3">Choose a Skill:</label>
+            <select id="skill-dropdown" class="text-black p-2 rounded w-full">
+                <option value="" disabled selected>Select a skill...</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Data Structures">Data Structures</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Blockchain">Blockchain</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Database Management">Database Management</option>
+            </select>
+
+            <!-- Start Quiz Button -->
+            <button onclick="startSkillQuiz()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-3">
+                Start Quiz
+            </button>
+
+            <!-- Quiz Display -->
+            <div id="quiz-container" class="mt-4"></div>
+        </div>
+
+        <!-- 3️⃣ Mentor Connect -->
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white/20 text-white hover:scale-105 transition">
+            <h3 class="text-2xl font-bold">👨‍🏫 Mentor Connect</h3>
+        
+            <!-- Skill Selection Dropdown -->
+            <label for="mentor-skill" class="block mt-3">Choose a Skill to Find a Mentor:</label>
+            <select id="mentor-skill" class="text-black p-2 rounded w-full">
+                <option value="" disabled selected>Select a skill...</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="DevOps">DevOps</option>
+                <option value="Blockchain">Blockchain</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Database Management">Database Management</option>
+            </select>
+        
+            <!-- Find Mentor Button -->
+            <button onclick="findMentor()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-3">
+                Find Mentor
+            </button>
+        
+            <!-- Mentor Display -->
+            <div id="mentor-list" class="mt-4"></div>
+        </div>
+
+        <!-- 4️⃣ Coding Challenges -->
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg shadow-lg border border-white/20 text-white hover:scale-105 transition">
+            <h3 class="text-2xl font-bold">💻 Coding Challenges</h3>
+
+            <!-- Quick Access Buttons -->
+            <div class="mt-4 flex space-x-4">
+                <a href="https://leetcode.com/" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded">
+                    🚀 LeetCode
+                </a>
+                <a href="https://www.hackerrank.com/" target="_blank" class="bg-green-500 hover:bg-green-600 text-black px-4 py-2 rounded">
+                    🔥 HackerRank
+                </a>
+            </div>
+
+            <!-- Daily Challenge Section -->
+            <h4 class="mt-4 text-xl">🔥 Daily Challenge</h4>
+            <p class="text-gray-300">Solve a new challenge every day!</p>
+            <button onclick="openDailyChallenge()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mt-3">
+                Start Today's Challenge
+            </button>
+
+            <!-- Challenge Timer -->
+            <div id="challenge-timer" class="mt-4 text-red-400 text-lg"></div>
+        </div>
+    </div>
+
+</body>
+</html>
