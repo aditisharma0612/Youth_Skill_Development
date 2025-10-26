@@ -1,10 +1,10 @@
-**SkillBridge - AI-Powered Education & Skill Development Platform**
+**SkillSpring – a springboard for young talent.**
 Check out here:
 https://aditisharma0612.github.io/Youth_Skill_Development/
 
 
 🚀 About the Project
-SkillBridge is an AI-powered skill development platform designed to help students and job seekers bridge the gap between their current skills and career aspirations. The platform provides personalized assessments, AI-powered course recommendations, job matching, mentorship, and career guidance.
+SkillSpring is an AI-powered skill development platform designed to help students and job seekers bridge the gap between their current skills and career aspirations. The platform provides personalized assessments, AI-powered course recommendations, job matching, mentorship, and career guidance.
 
 ✅ Features:
 
